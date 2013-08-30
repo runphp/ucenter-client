@@ -1,5 +1,5 @@
 {
-	"name" : "UcenterClient",
+	"name" : "runphp/UcenterClient",
 	"description" : "Ucenter Client",
 	"authors" : [{
 			"name" : "runphp",
@@ -15,7 +15,13 @@
 	],
 	"require" : {
 		"zf-commons/zfc-base" : "0.*",
+		"php" : ">=5.3",
 		"zendframework/zendframework" : "2.*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"UcenterClient" : "src/"
+		}
 	},
 	"minimum-stability" : "dev",
 	"support" : {
