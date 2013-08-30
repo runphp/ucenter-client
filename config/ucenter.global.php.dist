@@ -1,0 +1,14 @@
+<?php
+$settings = array(
+    'uc_connect' => null,
+    'uc_key' => '',
+    'uc_api' => 'http://bbs.runphp.net/uc_server',
+    'uc_charset' => 'utf-8',
+    'uc_ip' => '',
+    'uc_app_id' => 0,
+    'uc_ppp' => 0
+);
+
+return array(
+    'ucenter' => $settings
+);

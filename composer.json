@@ -1,0 +1,28 @@
+{
+	"name" : "UcenterClient",
+	"description" : "Ucenter Client",
+	"authors" : [{
+			"name" : "runphp",
+			"email" : "runphp@qq.com"
+		}
+	],
+	"keywords" : [
+		"Ucenter Client"
+	],
+	"homepage" : "http://www.runphp.net",
+	"license" : [
+		"GPL-2.0+"
+	],
+	"require" : {
+		"zf-commons/zfc-base" : "0.*",
+		"zendframework/zendframework" : "2.*"
+	},
+	"minimum-stability" : "dev",
+	"support" : {
+		"forum" : "http://bbs.runphp.net",
+		"source" : "https://github.com/runphp/ucenter-client",
+		"email" : "runphp@qq.com",
+		"issues" : "https://github.com/runphp/ucenter-client/issues",
+		"wiki" : "https://github.com/runphp/ucenter-client/wiki"
+	}
+}

@@ -1,4 +1,9 @@
-ucenter-client
-==============
+UcenterClient
+=============
 
-zf2 ucenter client
+
+Introduction
+------------
+
+UcenterClient is a client for ucenter client.
+[ucenter]http://www.comsenz.com/products/ucenter
