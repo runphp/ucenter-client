@@ -1,5 +1,5 @@
 {
-	"name" : "runphp/UcenterClient",
+	"name" : "runphp/ucenter-client",
 	"description" : "Ucenter Client",
 	"authors" : [{
 			"name" : "runphp",
