@@ -23,7 +23,6 @@
 			"UcenterClient" : "src/"
 		}
 	},
-	"minimum-stability" : "dev",
 	"support" : {
 		"forum" : "http://bbs.runphp.net",
 		"source" : "https://github.com/runphp/ucenter-client",
