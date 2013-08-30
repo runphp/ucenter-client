@@ -21,7 +21,10 @@
 	"autoload" : {
 		"psr-0" : {
 			"UcenterClient" : "src/"
-		}
+		},
+		"classmap" : [
+			"./Module.php"
+		]
 	},
 	"minimum-stability" : "dev",
 	"support" : {
