@@ -5,6 +5,7 @@ return array(
     'UcenterClient\Services\UcenterInterface'       => __DIR__ . '/src/UcenterClient/services/UcenterInterface.php',
     'UcenterClient\Services\Ucenter'                => __DIR__ . '/src/UcenterClient/services/Ucenter.php',
     'UcenterClient\Services\Plugin\SerializerXml'   => __DIR__ . '/src/UcenterClient/services/Plugin/SerializerXml.php',
+    'UcenterClient\Services\Plugin\Utils'           => __DIR__ . '/src/UcenterClient/services/Plugin/Utils.php',
     'UcenterClient\Services\Plugin\XML'             => __DIR__ . '/src/UcenterClient/services/Plugin/XML.php',
     'UcenterClient\Controller\Plugin\UcNote'        => __DIR__ . '/src/UcenterClient/Controller/Plugin/UcNote.php',
     'UcenterClient\Controller\IndexController'      => __DIR__ . '/src/UcenterClient/Controller/IndexController.php',
