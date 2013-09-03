@@ -4,6 +4,7 @@ namespace UcenterClient\Controller\Plugin;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use UcenterClient\Services\UcenterInterface as Ui;
 use UcenterClient\Services;
+use Zend\Http\Header\SetCookie;
 
 class UcNote extends AbstractPlugin
 {
@@ -56,9 +57,13 @@ class UcNote extends AbstractPlugin
         if (! Ui::API_SYNLOGIN) {
             return Ui::API_RETURN_FORBIDDEN;
         }
-
-        header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
-        $this->setcookie('ucenter_auth', Services\Plugin\Utils::ucAuthcode($uid . "\t" . $username, 'ENCODE'));
+        $cookie = new SetCookie('ucenter_auth', Services\Plugin\Utils::ucAuthcode($uid . "\t" . $username, 'ENCODE'), time() + 3600, '/', null, false, true);
+        $this->getController()
+            ->getResponse()
+            ->getHeaders()
+            ->addHeader($cookie)
+            ->addHeaderLine('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
+        return Ui::API_RETURN_SUCCEED;
     }
 
     public function synlogout($get, $post)
@@ -68,13 +73,12 @@ class UcNote extends AbstractPlugin
         }
 
         // note 同步登出 API 接口
-        header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
-        $this->setcookie('ucenter_auth', '', - 86400 * 365);
+        $cookie = new SetCookie('ucenter_auth', '', -3600, '/', null, false, true);
+        $this->getController()
+        ->getResponse()
+        ->getHeaders($cookie)
+        ->addHeader($cookie)->addHeaderLine('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
+        return Ui::API_RETURN_SUCCEED;
     }
 
-    private function setcookie($var, $value, $life = 0, $prefix = 1)
-    {
-        global $cookiepre, $cookiedomain, $cookiepath, $timestamp, $_SERVER;
-        setcookie(($prefix ? $cookiepre : '') . $var, $value, $life ? $timestamp + $life : 0, $cookiepath, $cookiedomain, $_SERVER['SERVER_PORT'] == 443 ? 1 : 0);
-    }
 }

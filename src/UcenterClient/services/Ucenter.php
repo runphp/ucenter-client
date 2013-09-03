@@ -11,6 +11,10 @@ class Ucenter extends EventProvider implements ServiceManagerAwareInterface
 
     protected $options;
 
+    public function getUser($ucCookie){
+        return explode("\t", Plugin\Utils::ucAuthcode($ucCookie, 'DECODE'));
+    }
+
     public function userLogin($username, $password, $isuid = 0, $checkques = 0, $questionid = '', $answer = '')
     {
         $options = $this->getOptions();
@@ -118,7 +122,7 @@ class Ucenter extends EventProvider implements ServiceManagerAwareInterface
     /**
      * Set service manager instance
      *
-     * @param ServiceManager $serviceManager            
+     * @param ServiceManager $serviceManager
      * @return User
      */
     public function setServiceManager(ServiceManager $serviceManager)
@@ -144,7 +148,7 @@ class Ucenter extends EventProvider implements ServiceManagerAwareInterface
     /**
      * set service options
      *
-     * @param UserServiceOptionsInterface $options            
+     * @param UserServiceOptionsInterface $options
      */
     public function setOptions(UcenterOptionsInterface $options)
     {

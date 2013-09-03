@@ -14,9 +14,11 @@
 		"GPL-2.0+"
 	],
 	"require" : {
-		"zf-commons/zfc-base" : "0.*",
 		"php" : ">=5.3",
 		"zendframework/zendframework" : "2.*"
+	},
+	"require-dev" : {
+		"zf-commons/zfc-user" : "0.*"
 	},
 	"autoload" : {
 		"psr-0" : {

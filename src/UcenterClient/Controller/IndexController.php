@@ -16,6 +16,7 @@ class IndexController extends AbstractActionController
      */
     public function indexAction()
     {
+        $response = $this->getResponse();
         $options = $this->getServiceLocator()->get('ucenter_client_module_options');
         $_DCACHE = $get = $post = array();
         $query = $this->getRequest()->getQuery();
@@ -24,28 +25,44 @@ class IndexController extends AbstractActionController
         parse_str(Services\Plugin\Utils::ucAuthcode($code, 'DECODE', $options->getUcKey()), $get);
         defined('MAGIC_QUOTES_GPC') || define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
         if (MAGIC_QUOTES_GPC) {
-            $get = $this->stripslashes($get);
+            $get = $this->_stripslashes($get);
         }
         if (empty($get)) {
-            exit('Invalid Request');
+            return $response->setContent('Invalid Request');
         }
         $timestamp = time();
-        if ($timestamp - $get['time'] > 3600) {
-            exit('Authracation has expiried');
+        if (isset($get['time']) && $timestamp - $get['time'] > 3600) {
+            return $response->setContent('Authracation has expiried');
         }
         $post = SerializerXml::unserialize(file_get_contents('php://input'));
-        if(in_array($get['action'], array('test', 'deleteuser', 'renameuser', 'gettag', 'synlogin', 'synlogout', 'updatepw', 'updatebadwords', 'updatehosts', 'updateapps', 'updateclient', 'updatecredit', 'getcreditsettings', 'updatecreditsettings'))) {
-            exit($this->ucNote()->$get['action']($get, $post));
-        }else {
-            exit(UcenterInterface::API_RETURN_FAILED);
+        if (isset($get['action']) && in_array($get['action'], array(
+            'test',
+            'deleteuser',
+            'renameuser',
+            'gettag',
+            'synlogin',
+            'synlogout',
+            'updatepw',
+            'updatebadwords',
+            'updatehosts',
+            'updateapps',
+            'updateclient',
+            'updatecredit',
+            'getcreditsettings',
+            'updatecreditsettings'
+        ))) {
+            return $response->setContent($this->ucNote()
+                ->$get['action']($get, $post));
+        } else {
+            return $response->setContent(UcenterInterface::API_RETURN_FAILED);
         }
     }
 
-    private function stripslashes($string)
+    private function _stripslashes($string)
     {
         if (is_array($string)) {
             foreach ($string as $key => $val) {
-                $string[$key] = stripslashes($val);
+                $string[$key] = $this->_stripslashes($val);
             }
         } else {
             $string = stripslashes($string);

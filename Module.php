@@ -48,7 +48,7 @@ class Module implements AutoloaderProviderInterface
     {
         return array(
             'invokables' => array(
-                 'ucNote' => 'UcenterClient\Controller\Plugin\UcNote'
+                'ucNote' => 'UcenterClient\Controller\Plugin\UcNote'
             )
         );
     }
