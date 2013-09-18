@@ -73,7 +73,7 @@ class UcNote extends AbstractPlugin
         }
 
         // note 同步登出 API 接口
-        $cookie = new SetCookie('ucenter_auth', '', -3600, '/', null, false, true);
+        $cookie = new SetCookie('ucenter_auth', '', 0, '/', null, false, true);
         $this->getController()
         ->getResponse()
         ->getHeaders($cookie)
