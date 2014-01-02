@@ -20,6 +20,10 @@ class ModuleOptions extends AbstractOptions implements UcenterOptionsInterface
 
     protected $ucPpp = 0;
 
+    protected $ucAuthService;
+
+    protected $ucAuthAdapter;
+
     public function getUcConnect()
     {
         return $this->ucConnect;
@@ -94,6 +98,28 @@ class ModuleOptions extends AbstractOptions implements UcenterOptionsInterface
     public function setUcPpp($ucPpp)
     {
         $this->ucPpp = $ucPpp;
+        return $this;
+    }
+
+    public function getUcAuthService()
+    {
+        return $this->ucAuthService;
+    }
+
+    public function setUcAuthService($ucAuthService)
+    {
+        $this->ucAuthService = $ucAuthService;
+        return $this;
+    }
+
+    public function getUcAuthAdapter()
+    {
+        return $this->ucAuthAdapter;
+    }
+
+    public function setUcAuthAdapter($ucAuthAdapter)
+    {
+        $this->ucAuthAdapter = $ucAuthAdapter;
         return $this;
     }
 }

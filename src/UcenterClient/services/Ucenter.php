@@ -3,10 +3,9 @@ namespace UcenterClient\Services;
 
 use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Zend\ServiceManager\ServiceManager;
-use ZfcBase\EventManager\EventProvider;
 use UcenterClient\Options\UcenterOptionsInterface;
 
-class Ucenter extends EventProvider implements ServiceManagerAwareInterface
+class Ucenter implements ServiceManagerAwareInterface
 {
 
     protected $options;

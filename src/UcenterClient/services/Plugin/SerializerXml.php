@@ -3,7 +3,7 @@ namespace UcenterClient\Services\Plugin;
 
 class SerializerXml
 {
-    static public function unserialize(&$xml, $isnormal = false) {
+    static public function unserialize($xml, $isnormal = false) {
         $xml_parser = new XML($isnormal);
         $data = $xml_parser->parse($xml);
         $xml_parser->destruct();

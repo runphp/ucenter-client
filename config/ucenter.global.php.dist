@@ -6,7 +6,9 @@ $settings = array(
     'uc_charset' => 'utf-8',
     'uc_ip' => '',
     'uc_app_id' => 0,
-    'uc_ppp' => 0
+    'uc_ppp' => 0,
+    'uc_auth_service' => 'user_auth_service',
+    'uc_auth_adapter' => 'Application\Authentication\Adapter\AdapterChain'
 );
 
 return array(

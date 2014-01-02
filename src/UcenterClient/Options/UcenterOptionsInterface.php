@@ -31,4 +31,12 @@ interface UcenterOptionsInterface
     public function getUcPpp();
 
     public function setUcPpp($ucPpp);
+
+    public function getUcAuthService();
+
+    public function SetUcAuthService($ucAuthService);
+
+    public function getUcAuthAdapter();
+
+    public function SetUcAuthAdapter($ucAuthAdapter);
 }
